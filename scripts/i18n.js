@@ -60,12 +60,6 @@ function setLanguage(lang) {
     // τίτλος καρτέλας
     if (t["page.title"]) document.title = t["page.title"];
 
-    // footer με τη χρονιά
-    if (footerRights) {
-        footerRights.textContent =
-            `© ${new Date().getFullYear()} HomiDirect. ${t["footer.rights"]}`;
-    }
-
     // aria-label του κουμπιού γλώσσας
     if (langButton) langButton.setAttribute("aria-label", t["nav.language"]);
 
