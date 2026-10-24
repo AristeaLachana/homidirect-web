@@ -1,25 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="el">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="public/favicon.ico">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styling/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <title>HomiDirect - Αρχική Σελίδα</title>
 </head>
 
 <body>
     <div class="navbar">
         <div class="navbar-logo">
-            <a href="#" alt="HomiDirect logo"><img src="public/logo.png" /></a>
-            <a>HomiDirect</a>
+            <a href="#"><img src="public/logo.png" alt="HomiDirect logo" /></a>
+            <a href="#" class="homidirect-text"><b>Homi</b>Direct</a>
         </div>
         <div class="nav-elements">
-            <a href="pages/search.html" alt="Search houses">Search</a>
-            <a href="#" alt="test">test2</a>
-            <a href="#" alt="test">test3</a>
-            <button>Log In</button>
+            <a href="#" class="active" data-i18n="nav.main">Αρχική</a>
+            <a href="pages/search.html" data-i18n="nav.search">Αναζήτηση Σπιτιού</a>
+            <a href="pages/create.html" data-i18n="nav.create">Καταχώρηση Αγγελίας</a>
+            <a href="pages/info.html" data-i18n="nav.info">Πληροφορίες</a>
+            <div class="lang-picker">
+                <button class="lang-button" id="lang-button" aria-label="Αλλαγή γλώσσας" aria-haspopup="true"
+                    aria-expanded="false">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <circle cx="12" cy="12" r="10" />
+                        <path d="M2 12h20" />
+                        <path
+                            d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                    </svg>
+                </button>
+                <ul class="lang-menu" id="lang-menu" hidden>
+                    <li><button data-lang="en">English</button></li>
+                    <li><button data-lang="el">Ελληνικά</button></li>
+                </ul>
+            </div>
+            <button class="green-button" data-i18n="nav.login">Σύνδεση</button>
         </div>
     </div>
 
@@ -27,11 +47,32 @@
         <div class="hero">
 
         </div>
+
+        <!-- <div class="recommendations">
+            <h1 data-i18n="rec.title">Προτεινόμενα Ακίνητα</h1>
+            <h3 data-i18n="rec.subtitle">Επιλεγμένα ακίνητα από αξιόπιστους ιδιοκτήτες.</h3>
+            <button class="green-button" data-i18n="rec.all">Προβολή όλων</button>
+        </div> -->
     </div>
 
-    <div class="footer">
-        <p>all rights reserved</p>
-    </div>
+    <footer class="footer">
+        <div class="footer-inner">
+
+            <!-- <div class="footer-brand">
+                <h5 class="footer-name">HomiDirect</h5>
+                <p class="footer-role">Construction &amp; Design</p>
+            </div> -->
+
+            <p class="footer-rights" id="footer-rights"></p>
+
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('footer-rights').textContent =
+            `© ${new Date().getFullYear()} HomiDirect. All rights reserved.`;
+    </script>
+    <script src="scripts/i18n.js"></script>
 </body>
 
 </html>

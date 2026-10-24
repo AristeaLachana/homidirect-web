@@ -1,0 +1,233 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    font-family: "Roboto", system-ui, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+/* navigation bar */
+
+.navbar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    user-select: none;
+    background-color: var(--background);
+    color: var(--foreground);
+    height: 5rem;
+    border-bottom: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    position: relative;
+    z-index: 10;
+
+}
+
+.navbar a {
+    text-decoration: none;
+    color: var(--muted-foreground);
+}
+
+.navbar-logo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+}
+
+.navbar-logo img {
+    max-width: 72px;
+}
+
+.navbar .homidirect-text {
+    font-size: 24px;
+    font-weight: 300;
+    letter-spacing: -0.5px;
+    color: rgb(71 85 105);
+}
+
+.navbar .homidirect-text b {
+    font-weight: 700;
+}
+
+.nav-elements {
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+    align-items: center;
+    font-weight: 400;
+    font-size: 15px;
+}
+
+.nav-elements a {
+    position: relative;
+    padding-bottom: 4px;
+}
+
+.nav-elements a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--muted-foreground);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
+}
+
+.nav-elements a:hover::after,
+.nav-elements a:focus-visible::after,
+.nav-elements a.active::after {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+/* Buttons */
+
+.lang-picker {
+    position: relative;
+}
+
+.lang-button {
+    display: flex;
+    align-items: center;
+    background: none;
+    border: 0;
+    padding: 6px;
+    border-radius: 8px;
+    color: var(--foreground);
+    cursor: pointer;
+}
+
+.lang-button:hover {
+    background: var(--muted);
+}
+
+.lang-menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    min-width: 150px;
+    list-style: none;
+    padding: 6px;
+    background: var(--background);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+.lang-menu button {
+    width: 100%;
+    text-align: left;
+    padding: 10px 14px;
+    background: none;
+    border: 0;
+    border-radius: 8px;
+    font: inherit;
+    color: var(--foreground);
+    cursor: pointer;
+}
+
+.lang-menu button:hover {
+    background: var(--muted);
+}
+
+.lang-menu button[aria-current="true"] {
+    background: var(--accent);
+}
+
+.green-button {
+    background-color: var(--primary);
+    border-radius: 10px;
+    padding: 10px 16px;
+    border: 0px;
+    font-weight: 600;
+}
+
+/* main body */
+
+.main {
+    flex: 1;
+    background-color: var(--background);
+}
+
+/* hero */
+
+.hero {
+    background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)),
+        url("../public/hero-bg.jpg");
+    background-position: center;
+    background-color: #cccccc;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 600px;
+    margin: auto;
+    position: relative;
+}
+
+
+/* footer */
+
+.footer {
+    background-color: var(--muted);
+    color: var(--muted-foreground);
+    user-select: none;
+    padding: 40px 24px 28px;
+}
+
+
+/* COLOR PALETTE */
+:root {
+    --background: hsl(0 0% 100%);
+    --foreground: hsl(222 47% 11%);
+
+    --primary: hsl(132 56% 68%);
+    --primary-foreground: hsl(222 47% 11%);
+
+    --secondary: hsl(89 59% 69%);
+    --accent: hsl(61 61% 68%);
+
+    --muted: hsl(132 20% 94%);
+    --muted-foreground: hsl(132 16% 45%);
+
+    --border: hsl(214 32% 91%);
+    --destructive: hsl(0 84% 60%);
+
+    --radius: 0.75rem;
+    --shadow: 0 4px 20px -4px hsl(222 47% 11% / 0.08);
+}
+
+.dark {
+    --background: hsl(222 47% 11%);
+    --foreground: hsl(210 40% 98%);
+
+    --primary: hsl(132 56% 45%);
+    --primary-foreground: hsl(0 0% 100%);
+
+    --secondary: hsl(89 30% 18%);
+    --accent: hsl(61 50% 55%);
+
+    --muted: hsl(89 20% 18%);
+    --muted-foreground: hsl(132 15% 60%);
+
+    --border: hsl(217 33% 18%);
+    --destructive: hsl(0 63% 31%);
+
+    --shadow: 0 4px 20px -4px hsl(0 0% 0% / 0.3);
+
+
+}
