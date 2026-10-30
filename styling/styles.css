@@ -1,3 +1,57 @@
+/* ==========================================================
+   COLOR PALETTE
+   ========================================================== */
+
+:root {
+    --background: hsl(0 0% 100%);
+    --foreground: hsl(222 47% 11%);
+
+    --primary: hsl(132 56% 68%);
+    --primary-foreground: hsl(222 47% 11%);
+
+    --secondary: hsl(89 59% 69%);
+    --accent: hsl(61 61% 68%);
+
+    --muted: hsl(132 20% 94%);
+    --muted-foreground: hsl(132 16% 45%);
+
+    --border: hsl(214 32% 91%);
+    --destructive: hsl(0 84% 60%);
+
+    --radius: 0.75rem;
+    --shadow: 0 4px 20px -4px hsl(222 47% 11% / 0.08);
+
+    /* auth pages */
+    --auth-radius: calc(var(--radius) * 2);
+    --auth-link: hsl(132 56% 28%);
+    --auth-input-border: color-mix(in srgb, var(--foreground) 25%, var(--background));
+}
+
+.dark {
+    --background: hsl(222 47% 11%);
+    --foreground: hsl(210 40% 98%);
+
+    --primary: hsl(132 56% 45%);
+    --primary-foreground: hsl(0 0% 100%);
+
+    --secondary: hsl(89 30% 18%);
+    --accent: hsl(61 50% 55%);
+
+    --muted: hsl(89 20% 18%);
+    --muted-foreground: hsl(132 15% 60%);
+
+    --border: hsl(217 33% 18%);
+    --destructive: hsl(0 63% 31%);
+
+    --shadow: 0 4px 20px -4px hsl(0 0% 0% / 0.3);
+
+    --auth-link: hsl(132 56% 60%);
+}
+
+/* ==========================================================
+   BASE
+   ========================================================== */
+
 * {
     margin: 0;
     box-sizing: border-box;
@@ -15,9 +69,21 @@ body {
     font-family: "Roboto", system-ui, sans-serif;
     font-size: 16px;
     line-height: 1.5;
+    background: var(--background);
+    color: var(--foreground);
 }
 
-/* navigation bar */
+/* τα inputs και τα κουμπιά δεν κληρονομούν το font από μόνα τους */
+input,
+button,
+select,
+textarea {
+    font: inherit;
+}
+
+/* ==========================================================
+   NAVIGATION BAR
+   ========================================================== */
 
 .navbar {
     display: flex;
@@ -32,7 +98,6 @@ body {
     box-shadow: var(--shadow);
     position: relative;
     z-index: 10;
-
 }
 
 .navbar a {
@@ -96,13 +161,24 @@ body {
     transform-origin: left;
 }
 
-/* Buttons */
+.nav-buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    align-items: center;
+    font-weight: 400;
+    font-size: 14px;
+}
 
-.lang-picker {
+/* ==========================================================
+   DROPDOWNS + BUTTONS
+   ========================================================== */
+
+.dropdown {
     position: relative;
 }
 
-.lang-button {
+.icon-button {
     display: flex;
     align-items: center;
     background: none;
@@ -113,11 +189,20 @@ body {
     cursor: pointer;
 }
 
-.lang-button:hover {
+.icon-button:hover {
     background: var(--muted);
 }
 
-.lang-menu {
+.icon-button:focus {
+    outline: none;
+}
+
+.icon-button:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+}
+
+.dropdown-menu {
     position: absolute;
     top: calc(100% + 8px);
     right: 0;
@@ -130,7 +215,9 @@ body {
     box-shadow: var(--shadow);
 }
 
-.lang-menu button {
+.dropdown-menu button,
+.dropdown-menu a {
+    display: block;
     width: 100%;
     text-align: left;
     padding: 10px 14px;
@@ -142,30 +229,31 @@ body {
     cursor: pointer;
 }
 
-.lang-menu button:hover {
+.dropdown-menu button:hover,
+.dropdown-menu a:hover {
     background: var(--muted);
 }
 
-.lang-menu button[aria-current="true"] {
-    background: var(--accent);
+.dropdown-menu button[aria-current="true"] {
+    background: var(--secondary);
 }
 
 .green-button {
     background-color: var(--primary);
     border-radius: 10px;
     padding: 10px 16px;
-    border: 0px;
+    border: 0;
     font-weight: 600;
 }
 
-/* main body */
+/* ==========================================================
+   MAIN + HERO
+   ========================================================== */
 
 .main {
     flex: 1;
     background-color: var(--background);
 }
-
-/* hero */
 
 .hero {
     background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)),
@@ -173,14 +261,16 @@ body {
     background-position: center;
     background-color: #cccccc;
     background-repeat: no-repeat;
-    width: 100%;
-    height: 600px;
-    margin: auto;
+    width: 98%;
+    height: 400px;
+    margin: 16px auto;
     position: relative;
+    border-radius: 16px;
 }
 
-
-/* footer */
+/* ==========================================================
+   FOOTER
+   ========================================================== */
 
 .footer {
     background-color: var(--muted);
@@ -189,45 +279,299 @@ body {
     padding: 40px 24px 28px;
 }
 
+/* ==========================================================
+   AUTH PAGES (login / signup)
+   ========================================================== */
 
-/* COLOR PALETTE */
-:root {
-    --background: hsl(0 0% 100%);
-    --foreground: hsl(222 47% 11%);
-
-    --primary: hsl(132 56% 68%);
-    --primary-foreground: hsl(222 47% 11%);
-
-    --secondary: hsl(89 59% 69%);
-    --accent: hsl(61 61% 68%);
-
-    --muted: hsl(132 20% 94%);
-    --muted-foreground: hsl(132 16% 45%);
-
-    --border: hsl(214 32% 91%);
-    --destructive: hsl(0 84% 60%);
-
-    --radius: 0.75rem;
-    --shadow: 0 4px 20px -4px hsl(222 47% 11% / 0.08);
+.auth-page {
+    flex: 1;
+    display: grid;
+    place-items: center;
+    padding: 16px;
+    background: var(--muted);
 }
 
-.dark {
-    --background: hsl(222 47% 11%);
-    --foreground: hsl(210 40% 98%);
+.auth-card {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: minmax(0, 1fr);
+    width: min(92vw, 1200px);
+    height: min(88vh, 800px);
+    background: var(--background);
+    border-radius: var(--auth-radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+}
 
-    --primary: hsl(132 56% 45%);
-    --primary-foreground: hsl(0 0% 100%);
+/* εικονίδιο γλώσσας πάνω δεξιά στην κάρτα */
 
-    --secondary: hsl(89 30% 18%);
-    --accent: hsl(61 50% 55%);
+.auth-card>.auth-lang {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    z-index: 2;
+}
 
-    --muted: hsl(89 20% 18%);
-    --muted-foreground: hsl(132 15% 60%);
+.auth-lang .icon-button {
+    padding: 8px;
+    background: color-mix(in srgb, var(--background) 85%, transparent);
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+    box-shadow: var(--shadow);
+}
 
-    --border: hsl(217 33% 18%);
-    --destructive: hsl(0 63% 31%);
+.auth-lang .icon-button:hover {
+    background: var(--background);
+}
 
-    --shadow: 0 4px 20px -4px hsl(0 0% 0% / 0.3);
+/* εικόνα */
 
+.auth-image-side {
+    background-color: var(--muted);
+    background-image: var(--auth-image, url("../public/hero-bg.jpg"));
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
 
+/* φόρμα */
+
+.auth-form-side {
+    display: flex;
+    flex-direction: column;
+    padding: 40px 48px;
+    overflow-y: auto;
+}
+
+.auth-brand {
+    align-self: flex-start;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 22px;
+    font-weight: 300;
+    letter-spacing: -0.5px;
+    color: rgb(71 85 105);
+    text-decoration: none;
+}
+
+.auth-brand img {
+    width: 40px;
+}
+
+.auth-brand b {
+    font-weight: 700;
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+    max-width: 380px;
+    margin: auto;
+    padding-top: 24px;
+}
+
+.auth-title {
+    font-size: 32px;
+    font-weight: 500;
+    letter-spacing: -0.5px;
+    line-height: 1.2;
+}
+
+.auth-subtitle {
+    margin-top: -8px;
+    color: var(--muted-foreground);
+}
+
+/* πεδία */
+
+.auth-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.auth-label {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.auth-input {
+    width: 100%;
+    padding: 12px 14px;
+    color: var(--foreground);
+    background: var(--background);
+    border: 1px solid var(--auth-input-border);
+    border-radius: var(--radius);
+    transition: border-color 0.2s ease;
+}
+
+.auth-input::placeholder {
+    color: var(--muted-foreground);
+    opacity: 0.8;
+}
+
+.auth-input:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 1px;
+    border-color: var(--auth-link);
+}
+
+.auth-input:user-invalid {
+    border-color: var(--destructive);
+}
+
+.auth-hint {
+    font-size: 13px;
+    color: color-mix(in srgb, var(--foreground) 70%, var(--background));
+}
+
+.auth-error {
+    font-size: 14px;
+    color: color-mix(in srgb, var(--destructive) 80%, var(--foreground));
+}
+
+/* checkbox */
+
+.auth-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    font-size: 14px;
+}
+
+.auth-check,
+.auth-terms {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.auth-terms {
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 14px;
+}
+
+.auth-form input[type="checkbox"] {
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+    margin-top: 2px;
+    accent-color: var(--auth-link);
+}
+
+/* κουμπιά */
+
+.auth-btn {
+    padding: 12px 16px;
+    font-weight: 600;
+    color: var(--primary-foreground);
+    background: var(--primary);
+    border: 0;
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: filter 0.2s ease;
+}
+
+.auth-btn:hover {
+    filter: brightness(0.95);
+}
+
+.auth-btn:focus-visible {
+    outline: 2px solid var(--foreground);
+    outline-offset: 2px;
+}
+
+.auth-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.auth-btn:disabled:hover {
+    filter: none;
+}
+
+.auth-social {
+    color: var(--foreground);
+    background: var(--background);
+    border: 1px solid var(--auth-input-border);
+}
+
+.auth-divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+    color: var(--muted-foreground);
+}
+
+.auth-divider::before,
+.auth-divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+}
+
+.auth-switch {
+    text-align: center;
+    font-size: 14px;
+}
+
+/* links μέσα στη φόρμα */
+
+.auth-form a {
+    color: var(--auth-link);
+    font-weight: 500;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.auth-form a:hover {
+    text-decoration-thickness: 2px;
+}
+
+/* κάτω από 768px: ολόκληρη οθόνη, η εικόνα γίνεται φόντο και η φόρμα πάνελ με blur */
+
+@media (max-width: 767px) {
+    .auth-page {
+        padding: 0;
+        background: none;
+    }
+
+    .auth-card {
+        grid-template-columns: 1fr;
+        place-items: center;
+        width: 100%;
+        height: 100vh;
+        height: 100dvh;
+        padding: 16px;
+        border-radius: 0;
+        box-shadow: none;
+        background-color: var(--muted);
+        background-image: var(--auth-image, url("../public/hero-bg.jpg"));
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+
+    .auth-image-side {
+        display: none;
+    }
+
+    .auth-form-side {
+        width: 100%;
+        max-width: 440px;
+        max-height: 100%;
+        padding: 28px 24px;
+        border-radius: var(--auth-radius);
+        background: color-mix(in srgb, var(--background) 85%, transparent);
+        -webkit-backdrop-filter: blur(12px);
+        backdrop-filter: blur(12px);
+    }
 }
