@@ -429,6 +429,48 @@ textarea {
     color: color-mix(in srgb, var(--foreground) 70%, var(--background));
 }
 
+/* εμφάνιση/απόκρυψη κωδικού */
+
+.password-field {
+    position: relative;
+}
+
+.password-field .auth-input {
+    padding-right: 46px;
+}
+
+.password-toggle {
+    position: absolute;
+    top: 50%;
+    right: 6px;
+    transform: translateY(-50%);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    border-radius: calc(var(--radius) - 2px);
+    color: var(--muted-foreground);
+    cursor: pointer;
+}
+
+.password-toggle:hover {
+    color: var(--foreground);
+}
+
+.password-toggle:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 1px;
+}
+
+/* το attribute hidden δεν κρύβει τα SVG σε όλους τους browsers */
+.password-toggle svg[hidden] {
+    display: none;
+}
+
 .auth-error {
     font-size: 14px;
     color: color-mix(in srgb, var(--destructive) 80%, var(--foreground));
@@ -497,6 +539,10 @@ textarea {
 }
 
 .auth-social {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
     color: var(--foreground);
     background: var(--background);
     border: 1px solid var(--auth-input-border);

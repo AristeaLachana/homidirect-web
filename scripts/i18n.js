@@ -23,6 +23,7 @@ const translations = {
         "auth.signup.subtitle": "Βρες ή καταχώρησε ακίνητο χωρίς μεσίτη.",
         "auth.password.placeholder" : "κωδικός",
         "auth.verify.password.placeholder" : "επαλήθευση κωδικού",
+        "auth.verify.password" : "Επαλήθευση Κωδικού",
         "auth.login.submit" : "Σύνδεση",
         "auth.signup.link": "Κάνε εδώ την εγγραφή σου.",
         "auth.login.link": "Σύνδεση.",
@@ -33,6 +34,8 @@ const translations = {
         "auth.google" : "Συνέχεια με Google",
         "auth.haveAccount" : "Έχεις ήδη λογαριασμό;",
         "auth.password.hint" : "Τουλάχιστον 8 χαρακτήρες.",
+        "auth.password.show": "Εμφάνιση κωδικού",
+        "auth.password.hide": "Απόκρυψη κωδικού",
         "auth.terms": 'Συμφωνώ με τους <a href="terms.html" target="_blank" rel="noopener">Όρους Χρήσης</a> και την <a href="privacy.html" target="_blank" rel="noopener">Πολιτική Απορρήτου</a>.',
     },
     en: {
@@ -61,12 +64,15 @@ const translations = {
         "auth.password" : "Password",
         "auth.password.placeholder" : "password",
         "auth.verify.password.placeholder" : "password verification",
+        "auth.verify.password" : "Verify password",
         "auth.login.haveAccount" : "No account yet?",
         "auth.signup.submit" : "Sign Up",
         "auth.or" : "or",
         "auth.google" : "Continue with Google",
         "auth.haveAccount" : "Already have an account?",
         "auth.password.hint" : "At least 8 characters.",
+        "auth.password.show": "Show password",
+        "auth.password.hide": "Hide password",
         "auth.terms": 'I agree to the <a href="terms.html" target="_blank" rel="noopener">Terms of Use</a> and the <a href="privacy.html" target="_blank" rel="noopener">Privacy Policy</a>.',
     },
 };
@@ -125,6 +131,9 @@ function setLanguage(lang) {
         }
     });
 }
+
+    // ενημέρωσε άλλα scripts (π.χ. aria-label του κουμπιού κωδικού)
+    document.dispatchEvent(new Event("languagechange"));
 }
 
 // ---------- Dropdowns ----------
